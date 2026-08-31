@@ -2,6 +2,7 @@ import { loadTotal, loadLast, save } from './storage.js';
 import { formatUSD } from './format.js';
 import { parseAmount, isValidInput } from './parse.js';
 import { animate } from './counter.js';
+import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
 const $last = document.getElementById('last-bid');
@@ -23,6 +24,7 @@ function bid() {
   total += val;
   last = val;
   save(total, last);
+  playCashout();
   animate($total, prevTotal, total, 'TOTAL: ');
   animate($last, prevLast, last);
   $input.value = '';
@@ -41,6 +43,10 @@ function reset() {
 
 $input.addEventListener('input', () => {
   $input.classList.toggle('invalid', !isValidInput($input.value));
+});
+
+$input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') bid();
 });
 
 document.getElementById('btn-bid').addEventListener('click', bid);
