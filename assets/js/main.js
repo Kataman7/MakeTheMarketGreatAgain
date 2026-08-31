@@ -29,6 +29,7 @@ function bid() {
   animate($last, prevLast, last);
   $input.value = '';
   $input.classList.remove('invalid');
+  $input.blur();
 }
 
 function reset() {
