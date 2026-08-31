@@ -17,7 +17,7 @@ function render() {
 
 function bid() {
   const val = parseAmount($input.value);
-  if (isNaN(val)) return;
+  if (val === null) return;
   const prevTotal = total;
   const prevDerniere = derniere;
   total += val;

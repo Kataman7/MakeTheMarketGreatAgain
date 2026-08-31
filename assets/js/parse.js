@@ -9,12 +9,12 @@ export function isValidInput(str) {
 export function parseAmount(str) {
   const v = str.trim().toLowerCase();
   const match = v.match(AMOUNT_RE);
-  if (!match) return NaN;
+  if (!match) return null;
   const [, num, suffix] = match;
   const [intPart, fracPart = ''] = num.split('.');
   const frac = fracPart.replace(/0+$/, '');
   const exp = suffix ? SUFFIX[suffix] : 0n;
   const decimals = BigInt(frac.length);
-  if (exp < decimals) return NaN;
+  if (exp < decimals) return null;
   return BigInt(intPart + frac) * 10n ** (exp - decimals);
 }
