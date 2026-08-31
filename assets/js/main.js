@@ -1,5 +1,5 @@
 import { loadTotal, loadLast, save, loadHistory, saveHistory } from './storage.js';
-import { formatUSD, formatCompact } from './format.js';
+import { formatUSD } from './format.js';
 import { parseAmount, isValidInput } from './parse.js';
 import { animate } from './counter.js';
 import { playCashout } from './sound.js';
@@ -7,8 +7,8 @@ import { playCashout } from './sound.js';
 const $total = document.getElementById('total');
 const $last = document.getElementById('last-bid');
 const $input = document.getElementById('amount');
+const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
-const $pendingValue = document.getElementById('pending-value');
 const $controls = document.getElementById('controls');
 
 let total = loadTotal();
@@ -19,11 +19,15 @@ let pending = null;
 function render() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
   $last.textContent = formatUSD(pending !== null ? pending : last);
+  updatePreview();
 }
 
-function showPending(value) {
-  pending = value;
-  $pendingValue.textContent = formatUSD(value);
+function updatePreview() {
+  const val = parseAmount($input.value);
+  $preview.textContent = val === null ? '' : formatUSD(val);
+}
+
+function showPending() {
   $pending.classList.remove('hidden');
   $controls.classList.add('hidden');
 }
@@ -37,10 +41,11 @@ function hidePending() {
 function bid() {
   const val = parseAmount($input.value);
   if (val === null) return;
-  showPending(val);
+  pending = val;
   $input.value = '';
   $input.classList.remove('invalid');
   render();
+  showPending();
 }
 
 function validate() {
@@ -82,22 +87,9 @@ function reset() {
   $input.classList.remove('invalid');
 }
 
-let formatTimer;
-
 $input.addEventListener('input', () => {
   $input.classList.toggle('invalid', !isValidInput($input.value));
-  clearTimeout(formatTimer);
-  formatTimer = setTimeout(() => {
-    const raw = $input.value.trim().toLowerCase();
-    if (/^-?\d+$/.test(raw)) {
-      const n = BigInt(raw);
-      const formatted = formatCompact(n);
-      if (formatted !== raw) {
-        $input.value = formatted;
-        $input.setSelectionRange(formatted.length, formatted.length);
-      }
-    }
-  }, 200);
+  updatePreview();
 });
 
 $input.addEventListener('keydown', (e) => {
