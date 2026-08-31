@@ -37,3 +37,9 @@ export function save(total, last) {
 export function saveHistory(history) {
   localStorage.setItem(KEY_HISTORY, JSON.stringify(history.map((v) => v.toString())));
 }
+
+export function reset() {
+  localStorage.removeItem(KEY_TOTAL);
+  localStorage.removeItem(KEY_LAST);
+  localStorage.removeItem(KEY_HISTORY);
+}
