@@ -14,18 +14,68 @@
       margin: 0;
       padding: 0;
     }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] { -moz-appearance: textfield; }
   </style>
 </head>
 <body class="h-full bg-[#fdfdfd] flex flex-col items-center justify-between py-6 px-4">
   <a href="../index.html" class="absolute top-4 left-4 text-sm hover:underline">&larr; Retour</a>
 
-  <div class="text-lg">TOTAL: 0</div>
+  <div id="total" class="text-lg">TOTAL: $0</div>
 
-  <div class="text-8xl sm:text-9xl">0</div>
+  <div id="derniere" class="text-8xl sm:text-9xl">$0</div>
 
   <div class="flex flex-col gap-3 w-full max-w-xs">
-    <button class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Enchère</button>
-    <button class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Reset</button>
+    <input id="montant" type="number" placeholder="Montant $" class="w-full py-3 border-2 border-black text-xl text-center bg-transparent outline-none placeholder-gray-400">
+    <button id="btnEnchere" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Enchère</button>
+    <button id="btnReset" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Reset</button>
   </div>
+
+  <script>
+    let total = 0;
+    let derniere = 0;
+
+    const fmt = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      notation: 'compact',
+      compactDisplay: 'short',
+      maximumFractionDigits: 2
+    });
+
+    const fmtFull = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    });
+
+    function format(n) {
+      const abs = Math.abs(n);
+      if (abs >= 1e12) return fmt.format(n);
+      return fmtFull.format(n);
+    }
+
+    document.getElementById('btnEnchere').addEventListener('click', () => {
+      const input = document.getElementById('montant');
+      const val = parseInt(input.value);
+      if (!val || val <= 0) return;
+      total += val;
+      derniere = val;
+      document.getElementById('total').textContent = 'TOTAL: ' + format(total);
+      document.getElementById('derniere').textContent = format(derniere);
+      input.value = '';
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+      total = 0;
+      derniere = 0;
+      document.getElementById('total').textContent = 'TOTAL: $0';
+      document.getElementById('derniere').textContent = '$0';
+    });
+  </script>
 </body>
 </html>
