@@ -36,45 +36,68 @@
   </div>
 
   <script>
-    let total = 0;
-    let derniere = 0;
+    const $total = document.getElementById('total');
+    const $derniere = document.getElementById('derniere');
+
+    let total = parseInt(localStorage.getItem('mmga_total')) || 0;
+    let derniere = parseInt(localStorage.getItem('mmga_derniere')) || 0;
 
     const fmt = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      notation: 'compact',
-      compactDisplay: 'short',
+      style: 'currency', currency: 'USD',
+      notation: 'compact', compactDisplay: 'short',
       maximumFractionDigits: 2
     });
-
     const fmtFull = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+      style: 'currency', currency: 'USD',
       maximumFractionDigits: 0
     });
 
     function format(n) {
-      const abs = Math.abs(n);
-      if (abs >= 1e12) return fmt.format(n);
-      return fmtFull.format(n);
+      return Math.abs(n) >= 1e12 ? fmt.format(n) : fmtFull.format(n);
     }
+
+    function save() {
+      localStorage.setItem('mmga_total', total);
+      localStorage.setItem('mmga_derniere', derniere);
+    }
+
+    function animate(el, from, to, prefix, duration) {
+      const start = performance.now();
+      const diff = to - from;
+      if (diff === 0) { el.textContent = prefix + format(to); return; }
+      function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = prefix + format(Math.round(from + diff * ease));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    $total.textContent = 'TOTAL: ' + format(total);
+    $derniere.textContent = format(derniere);
 
     document.getElementById('btnEnchere').addEventListener('click', () => {
       const input = document.getElementById('montant');
       const val = parseInt(input.value);
-      if (!val || val <= 0) return;
+      if (val < 0 || isNaN(val)) return;
+      const prevTotal = total;
       total += val;
       derniere = val;
-      document.getElementById('total').textContent = 'TOTAL: ' + format(total);
-      document.getElementById('derniere').textContent = format(derniere);
+      save();
+      animate($total, prevTotal, total, 'TOTAL: ', 400);
+      animate($derniere, derniere - val, derniere, '', 400);
       input.value = '';
     });
 
     document.getElementById('btnReset').addEventListener('click', () => {
+      const prevTotal = total;
+      const prevDerniere = derniere;
       total = 0;
       derniere = 0;
-      document.getElementById('total').textContent = 'TOTAL: $0';
-      document.getElementById('derniere').textContent = '$0';
+      save();
+      animate($total, prevTotal, 0, 'TOTAL: ', 400);
+      animate($derniere, prevDerniere, 0, '', 400);
     });
   </script>
 </body>
