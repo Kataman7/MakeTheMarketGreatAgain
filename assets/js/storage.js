@@ -1,5 +1,5 @@
 const KEY_TOTAL = 'mmga_total';
-const KEY_LAST = 'mmga_derniere';
+const KEY_LAST = 'mmga_last';
 
 function readBig(key) {
   try {
@@ -18,7 +18,7 @@ export function loadLast() {
   return readBig(KEY_LAST);
 }
 
-export function save(total, derniere) {
+export function save(total, last) {
   localStorage.setItem(KEY_TOTAL, total.toString());
-  localStorage.setItem(KEY_LAST, derniere.toString());
+  localStorage.setItem(KEY_LAST, last.toString());
 }
