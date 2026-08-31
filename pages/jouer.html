@@ -82,11 +82,12 @@
       const val = parseInt(input.value);
       if (val < 0 || isNaN(val)) return;
       const prevTotal = total;
+      const prevDerniere = derniere;
       total += val;
       derniere = val;
       save();
       animate($total, prevTotal, total, 'TOTAL: ', 400);
-      animate($derniere, derniere - val, derniere, '', 400);
+      animate($derniere, prevDerniere, derniere, '', 400);
       input.value = '';
     });
 
