@@ -1,5 +1,5 @@
 const SUFFIX = { k: 3n, m: 6n, b: 9n, t: 12n };
-const AMOUNT_RE = /^(\d+(?:\.\d+)?)\s*([kmbt])?$/;
+const AMOUNT_RE = /^(-?\d+(?:\.\d+)?)\s*([kmbt])?$/;
 
 export function isValidInput(str) {
   const v = str.trim().toLowerCase();
