@@ -1,27 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full overflow-hidden">
+<html lang="fr" class="no-scroll">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Jouer - MMGA</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body {
-      font-family: 'Times New Roman', Times, serif;
-      font-weight: bold;
-      overflow: hidden;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    input[type="number"] { -moz-appearance: textfield; }
-    .invalid { border-color: red !important; }
-  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body class="h-full bg-[#fdfdfd] flex flex-col items-center justify-between py-6 px-4">
   <a href="../index.html" class="absolute top-4 left-4 text-sm hover:underline">&larr; Retour</a>
@@ -36,95 +21,6 @@
     <button id="btnReset" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Reset</button>
   </div>
 
-  <script>
-    const $total = document.getElementById('total');
-    const $derniere = document.getElementById('derniere');
-
-    let total = parseInt(localStorage.getItem('mmga_total')) || 0;
-    let derniere = parseInt(localStorage.getItem('mmga_derniere')) || 0;
-
-    const fmt = new Intl.NumberFormat('en-US', {
-      style: 'currency', currency: 'USD',
-      notation: 'compact', compactDisplay: 'short',
-      maximumFractionDigits: 2
-    });
-    const fmtFull = new Intl.NumberFormat('en-US', {
-      style: 'currency', currency: 'USD',
-      maximumFractionDigits: 0
-    });
-
-    function format(n) {
-      return Math.abs(n) >= 1e12 ? fmt.format(n) : fmtFull.format(n);
-    }
-
-    function save() {
-      localStorage.setItem('mmga_total', total);
-      localStorage.setItem('mmga_derniere', derniere);
-    }
-
-    function animate(el, from, to, prefix, duration) {
-      const start = performance.now();
-      const diff = to - from;
-      if (diff === 0) { el.textContent = prefix + format(to); return; }
-      function tick(now) {
-        const t = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - t, 3);
-        el.textContent = prefix + format(Math.round(from + diff * ease));
-        if (t < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    $total.textContent = 'TOTAL: ' + format(total);
-    $derniere.textContent = format(derniere);
-
-    const SUFFIX = { k: 1e3, m: 1e6, b: 1e9, t: 1e12 };
-
-    function parse(str) {
-      str = str.trim().toLowerCase();
-      if (!str) return NaN;
-      const match = str.match(/^([\d]+(?:\.[\d]+)?)\s*([kmbt])?$/);
-      if (!match) return NaN;
-      const n = parseFloat(match[1]);
-      if (n < 0) return NaN;
-      const suffix = match[2];
-      return suffix ? n * SUFFIX[suffix] : n;
-    }
-
-    const $input = document.getElementById('montant');
-
-    $input.addEventListener('input', () => {
-      const v = $input.value.trim().toLowerCase();
-      if (v === '' || /^[\d]+(?:\.[\d]+)?\s*[kmbt]?$/.test(v)) {
-        $input.classList.remove('invalid');
-      } else {
-        $input.classList.add('invalid');
-      }
-    });
-
-    document.getElementById('btnEnchere').addEventListener('click', () => {
-      const val = parse($input.value);
-      if (isNaN(val) || val < 0) return;
-      const prevTotal = total;
-      const prevDerniere = derniere;
-      total += val;
-      derniere = val;
-      save();
-      animate($total, prevTotal, total, 'TOTAL: ', 400);
-      animate($derniere, prevDerniere, derniere, '', 400);
-      $input.value = '';
-      $input.classList.remove('invalid');
-    });
-
-    document.getElementById('btnReset').addEventListener('click', () => {
-      const prevTotal = total;
-      const prevDerniere = derniere;
-      total = 0;
-      derniere = 0;
-      save();
-      animate($total, prevTotal, 0, 'TOTAL: ', 400);
-      animate($derniere, prevDerniere, 0, '', 400);
-    });
-  </script>
+  <script type="module" src="../assets/js/main.js"></script>
 </body>
 </html>
