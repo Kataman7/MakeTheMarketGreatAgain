@@ -29,7 +29,7 @@ Each turn, draw and play a **Company** card.
 
 ### The Tweets
 
-At regular intervals (for example every 3 companies bought, or at your own pace), draw and read a Trump Tweet out loud. Place it in the center of the table: it will modify the value of the cards at the end of the game.
+At regular intervals (for example every 2 companies bought, or at your own pace), draw and read a Trump Tweet out loud. Place it in the center of the table: it will modify the value of the cards at the end of the game.
 
 ## End of game and scoring
 
@@ -45,4 +45,4 @@ All players publicly announce the total amount of money they spent from the star
 - Then apply the bonuses and penalties of all the Tweets placed on the table.
 - Don't forget to check your cards: if you own the required sectors or countries, your **Shields cancel the penalties**.
 
-The survivor with the most VP wins.
+The survivor with the most VP wins. **A player with 0 VP at the end is also eliminated: you need a positive number of VP to win.**

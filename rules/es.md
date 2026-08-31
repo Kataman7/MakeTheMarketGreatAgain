@@ -29,7 +29,7 @@ En cada turno, roba y juega una carta de **Empresa**.
 
 ### Los Tweets
 
-A intervalos regulares (por ejemplo, cada 3 empresas compradas, o al ritmo que elijas), roba y lee un Tweet de Trump en voz alta. Colócalo en el centro de la mesa: modificará el valor de las cartas al final del juego.
+A intervalos regulares (por ejemplo, cada 2 empresas compradas, o al ritmo que elijas), roba y lee un Tweet de Trump en voz alta. Colócalo en el centro de la mesa: modificará el valor de las cartas al final del juego.
 
 ## Fin de la partida y recuento
 
@@ -45,4 +45,4 @@ Todos los jugadores anuncian públicamente el total acumulado del dinero que gas
 - Luego aplica las bonificaciones y penalizaciones de todos los Tweets colocados en la mesa.
 - No olvides revisar tus cartas: si posees los sectores o países requeridos, tus **Escudos anulan las penalizaciones**.
 
-El superviviente con más PV gana.
+El superviviente con más PV gana. **Un jugador con 0 PV al final también es eliminado: se necesita un número positivo de PV para ganar.**

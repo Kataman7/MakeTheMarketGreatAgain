@@ -29,7 +29,7 @@ Accumuler le plus de **points de victoire (PV)** grâce à ses entreprises tout 
 
 ### Les Tweets
 
-À intervalles réguliers (par exemple toutes les 3 entreprises achetées, ou selon votre choix de rythme), piochez et lisez un Tweet de Trump à voix haute. Posez-le au centre de la table : il modifiera la valeur des cartes à la fin du jeu.
+À intervalles réguliers (par exemple toutes les 2 entreprises achetées, ou selon votre choix de rythme), piochez et lisez un Tweet de Trump à voix haute. Posez-le au centre de la table : il modifiera la valeur des cartes à la fin du jeu.
 
 ## Fin de partie et décompte
 
@@ -45,4 +45,4 @@ Tous les joueurs annoncent publiquement le total cumulé de l'argent qu'ils ont 
 - Appliquez ensuite les bonus et les malus de tous les Tweets posés sur la table.
 - N'oubliez pas de vérifier vos cartes : si vous possédez les secteurs ou les pays requis, vos **Boucliers annulent les malus**.
 
-Le survivant qui termine avec le plus de PV l'emporte.
+Le survivant qui termine avec le plus de PV l'emporte. **Un joueur avec 0 PV à la fin est aussi éliminé : il faut un nombre positif de PV pour gagner.**
