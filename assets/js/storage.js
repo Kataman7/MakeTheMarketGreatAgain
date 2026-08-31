@@ -38,6 +38,11 @@ export function saveHistory(history) {
   localStorage.setItem(KEY_HISTORY, JSON.stringify(history.map((v) => v.toString())));
 }
 
+export function saveGame(total, last, history) {
+  save(total, last);
+  saveHistory(history);
+}
+
 export function reset() {
   localStorage.removeItem(KEY_TOTAL);
   localStorage.removeItem(KEY_LAST);

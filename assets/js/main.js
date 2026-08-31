@@ -1,4 +1,4 @@
-import { loadTotal, loadLast, save, loadHistory, saveHistory } from './storage.js';
+import { loadTotal, loadLast, loadHistory, saveGame } from './storage.js';
 import { formatUSD } from './format.js';
 import { parseAmount, isValidInput } from './parse.js';
 import { animate } from './counter.js';
@@ -38,12 +38,21 @@ function hidePending() {
   $controls.classList.remove('hidden');
 }
 
+function animateState(prevTotal, prevLast) {
+  animate($total, prevTotal, total, 'TOTAL: ');
+  animate($last, prevLast, last);
+}
+
+function clearInput() {
+  $input.value = '';
+  $input.classList.remove('invalid');
+}
+
 function bid() {
   const val = parseAmount($input.value);
   if (val === null) return;
   pending = val;
-  $input.value = '';
-  $input.classList.remove('invalid');
+  clearInput();
   render();
   showPending();
 }
@@ -55,12 +64,10 @@ function validate() {
   total += pending;
   last = pending;
   history.push(pending);
-  save(total, last);
-  saveHistory(history);
+  saveGame(total, last, history);
   playCashout();
   hidePending();
-  animate($total, prevTotal, total, 'TOTAL: ');
-  animate($last, prevLast, last);
+  animateState(prevTotal, prevLast);
   render();
   $input.blur();
 }
@@ -76,15 +83,11 @@ function reset() {
   total = 0n;
   last = 0n;
   history = [];
-  pending = null;
-  save(total, last);
-  saveHistory(history);
+  saveGame(total, last, history);
   hidePending();
-  animate($total, prevTotal, total, 'TOTAL: ');
-  animate($last, prevLast, last);
+  animateState(prevTotal, prevLast);
   render();
-  $input.value = '';
-  $input.classList.remove('invalid');
+  clearInput();
 }
 
 $input.addEventListener('input', () => {
