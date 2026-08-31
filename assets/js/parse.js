@@ -1,4 +1,4 @@
-const SUFFIX = { k: 1e3, m: 1e6, b: 1e9, t: 1e12 };
+const SUFFIX = { k: 3n, m: 6n, b: 9n, t: 12n };
 const AMOUNT_RE = /^(\d+(?:\.\d+)?)\s*([kmbt])?$/;
 
 export function isValidInput(str) {
@@ -10,7 +10,11 @@ export function parseAmount(str) {
   const v = str.trim().toLowerCase();
   const match = v.match(AMOUNT_RE);
   if (!match) return NaN;
-  const n = parseFloat(match[1]);
-  const suffix = match[2];
-  return suffix ? n * SUFFIX[suffix] : n;
+  const [, num, suffix] = match;
+  const [intPart, fracPart = ''] = num.split('.');
+  const frac = fracPart.replace(/0+$/, '');
+  const exp = suffix ? SUFFIX[suffix] : 0n;
+  const decimals = BigInt(frac.length);
+  if (exp < decimals) return NaN;
+  return BigInt(intPart + frac) * 10n ** (exp - decimals);
 }

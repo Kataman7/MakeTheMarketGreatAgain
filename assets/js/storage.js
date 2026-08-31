@@ -1,15 +1,24 @@
 const KEY_TOTAL = 'mmga_total';
 const KEY_LAST = 'mmga_derniere';
 
+function readBig(key) {
+  try {
+    const v = localStorage.getItem(key);
+    return v ? BigInt(v) : 0n;
+  } catch {
+    return 0n;
+  }
+}
+
 export function loadTotal() {
-  return parseInt(localStorage.getItem(KEY_TOTAL)) || 0;
+  return readBig(KEY_TOTAL);
 }
 
 export function loadLast() {
-  return parseInt(localStorage.getItem(KEY_LAST)) || 0;
+  return readBig(KEY_LAST);
 }
 
 export function save(total, derniere) {
-  localStorage.setItem(KEY_TOTAL, total);
-  localStorage.setItem(KEY_LAST, derniere);
+  localStorage.setItem(KEY_TOTAL, total.toString());
+  localStorage.setItem(KEY_LAST, derniere.toString());
 }
