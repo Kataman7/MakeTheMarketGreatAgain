@@ -10,6 +10,7 @@ const $input = document.getElementById('amount');
 const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
+const $turns = document.getElementById('turns');
 
 let total = loadTotal();
 let last = loadLast();
@@ -19,6 +20,7 @@ let pending = null;
 function render() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
   $last.textContent = formatUSD(pending !== null ? pending : last);
+  $turns.textContent = 'Turn ' + history.length;
   updatePreview();
 }
 
