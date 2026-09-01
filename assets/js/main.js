@@ -1,8 +1,8 @@
-import { loadTotal, loadHistory, saveGame } from './storage.js';
-import { formatUSD } from './format.js';
-import { parseAmount, canAppend } from './parse.js';
-import { animate } from './counter.js';
-import { playCashout } from './sound.js';
+import { loadTotal, loadHistory, saveGame } from './storage.js?v=1';
+import { formatUSD } from './format.js?v=1';
+import { parseAmount, canAppend } from './parse.js?v=1';
+import { animate } from './counter.js?v=1';
+import { playCashout } from './sound.js?v=1';
 
 const $total = document.getElementById('total');
 const $bid = document.getElementById('bid-display');
