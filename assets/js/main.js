@@ -6,7 +6,6 @@ import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
 const $last = document.getElementById('last-bid');
-const $typed = document.getElementById('typed');
 const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
@@ -23,11 +22,6 @@ function render() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
   $last.textContent = formatUSD(pending !== null ? pending : last);
   $turns.textContent = 'Turn ' + history.length;
-  updateTyped();
-}
-
-function updateTyped() {
-  $typed.textContent = typed === '' ? '0' : typed;
   updatePreview();
 }
 
@@ -54,18 +48,18 @@ function animateState(prevTotal, prevLast) {
 
 function clearTyped() {
   typed = '';
-  updateTyped();
+  updatePreview();
 }
 
 function appendKey(key) {
   if (!canAppend(typed, key)) return;
   typed += key;
-  updateTyped();
+  updatePreview();
 }
 
 function backspace() {
   typed = typed.slice(0, -1);
-  updateTyped();
+  updatePreview();
 }
 
 function bid() {
@@ -96,24 +90,12 @@ function cancel() {
   render();
 }
 
-function reset() {
-  const prevTotal = total;
-  const prevLast = last;
-  total = 0n;
-  last = 0n;
-  history = [];
-  saveGame(total, last, history);
-  hidePending();
-  animateState(prevTotal, prevLast);
-  render();
-  clearTyped();
-}
-
 $keypad.addEventListener('click', (e) => {
   const btn = e.target.closest('button');
   if (!btn) return;
   const key = btn.dataset.key;
   if (key === 'backspace') backspace();
+  else if (key === 'clear') clearTyped();
   else if (key === 'bid') bid();
   else appendKey(key);
 });
@@ -124,6 +106,5 @@ document.addEventListener('keydown', (e) => {
 
 document.getElementById('btn-validate').addEventListener('click', validate);
 document.getElementById('btn-cancel').addEventListener('click', cancel);
-document.getElementById('btn-reset').addEventListener('click', reset);
 
 render();
