@@ -1,11 +1,11 @@
-import { loadTotal, loadLast, loadHistory, saveGame } from './storage.js';
+import { loadTotal, loadHistory, saveGame } from './storage.js';
 import { formatUSD } from './format.js';
 import { parseAmount, canAppend } from './parse.js';
 import { animate } from './counter.js';
 import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
-const $last = document.getElementById('last-bid');
+const $bid = document.getElementById('bid-display');
 const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
@@ -13,14 +13,13 @@ const $turns = document.getElementById('turns');
 const $keypad = document.getElementById('keypad');
 
 let total = loadTotal();
-let last = loadLast();
 let history = loadHistory();
 let pending = null;
 let typed = '';
 
 function render() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
-  $last.textContent = formatUSD(pending !== null ? pending : last);
+  $bid.textContent = formatUSD(pending ?? 0n);
   $turns.textContent = 'Turn ' + history.length;
   updatePreview();
 }
@@ -36,14 +35,8 @@ function showPending() {
 }
 
 function hidePending() {
-  pending = null;
   $pending.classList.add('hidden');
   $controls.classList.remove('hidden');
-}
-
-function animateState(prevTotal, prevLast) {
-  animate($total, prevTotal, total, 'TOTAL: ');
-  animate($last, prevLast, last);
 }
 
 function clearTyped() {
@@ -67,27 +60,31 @@ function bid() {
   if (val === null) return;
   pending = val;
   clearTyped();
-  render();
+  animate($bid, 0n, pending);
   showPending();
 }
 
 function validate() {
   if (pending === null) return;
   const prevTotal = total;
-  const prevLast = last;
+  const prevPending = pending;
   total += pending;
-  last = pending;
   history.push(pending);
-  saveGame(total, last, history);
+  saveGame(total, history);
   playCashout();
+  pending = null;
   hidePending();
-  animateState(prevTotal, prevLast);
+  animate($bid, prevPending, 0n);
+  animate($total, prevTotal, total, 'TOTAL: ');
   render();
 }
 
 function cancel() {
+  if (pending === null) return;
+  const prevPending = pending;
+  pending = null;
   hidePending();
-  render();
+  animate($bid, prevPending, 0n);
 }
 
 $keypad.addEventListener('click', (e) => {
