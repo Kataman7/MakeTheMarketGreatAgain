@@ -1,4 +1,4 @@
-import { formatUSD } from './format.js?v=1';
+import { formatUSD } from './format.js';
 
 const STEPS = 1000n;
 

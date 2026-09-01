@@ -1,5 +1,5 @@
-import { loadHistory, reset } from './storage.js?v=1';
-import { formatUSD } from './format.js?v=1';
+import { loadHistory, reset } from './storage.js';
+import { formatUSD } from './format.js';
 
 const $list = document.getElementById('history-list');
 const $total = document.getElementById('history-total');
