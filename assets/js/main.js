@@ -114,10 +114,14 @@ $keypad.addEventListener('click', (e) => {
   if (!btn) return;
   const key = btn.dataset.key;
   if (key === 'backspace') backspace();
+  else if (key === 'bid') bid();
   else appendKey(key);
 });
 
-document.getElementById('btn-bid').addEventListener('click', bid);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') bid();
+});
+
 document.getElementById('btn-validate').addEventListener('click', validate);
 document.getElementById('btn-cancel').addEventListener('click', cancel);
 document.getElementById('btn-reset').addEventListener('click', reset);
