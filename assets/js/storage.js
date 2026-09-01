@@ -1,5 +1,6 @@
 const KEY_TOTAL = 'mmga_total';
 const KEY_HISTORY = 'mmga_history';
+const KEY_TURNS = 'mmga_turns';
 
 function readBig(key) {
   try {
@@ -14,6 +15,14 @@ export function loadTotal() {
   return readBig(KEY_TOTAL);
 }
 
+export function loadTurns() {
+  return readBig(KEY_TURNS);
+}
+
+export function loadTurns() {
+  return readBig(KEY_TURNS);
+}
+
 export function loadHistory() {
   try {
     const raw = localStorage.getItem(KEY_HISTORY);
@@ -24,12 +33,14 @@ export function loadHistory() {
   }
 }
 
-export function saveGame(total, history) {
+export function saveGame(total, history, turns) {
   localStorage.setItem(KEY_TOTAL, total.toString());
   localStorage.setItem(KEY_HISTORY, JSON.stringify(history.map((v) => v.toString())));
+  localStorage.setItem(KEY_TURNS, turns.toString());
 }
 
 export function reset() {
   localStorage.removeItem(KEY_TOTAL);
   localStorage.removeItem(KEY_HISTORY);
+  localStorage.removeItem(KEY_TURNS);
 }

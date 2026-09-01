@@ -1,4 +1,4 @@
-import { loadTotal, loadHistory, saveGame } from './storage.js';
+import { loadTotal, loadHistory, loadTurns, saveGame } from './storage.js';
 import { formatUSD } from './format.js';
 import { parseAmount, canAppend } from './parse.js';
 import { animate } from './counter.js';
@@ -14,15 +14,16 @@ const $keypad = document.getElementById('keypad');
 
 let total = loadTotal();
 let history = loadHistory();
+let turns = loadTurns();
 let pending = null;
 let typed = '';
 
 function renderTotal() {
-  $total.textContent = 'TOTAL: ' + formatUSD(total);
+  $total.textContent = formatUSD(total);
 }
 
 function renderTurns() {
-  $turns.textContent = 'Turn ' + history.length;
+  $turns.textContent = 'Turn ' + turns;
 }
 
 function render() {
@@ -71,26 +72,30 @@ function bid() {
   showPending();
 }
 
+function finishPending() {
+  pending = null;
+  hidePending();
+  turns += 1n;
+  saveGame(total, history, turns);
+  renderTurns();
+}
+
 function validate() {
   if (pending === null) return;
   const prevTotal = total;
   const prevPending = pending;
   total += pending;
   history.push(pending);
-  saveGame(total, history);
   playCashout();
-  pending = null;
-  hidePending();
+  finishPending();
   animate($bid, prevPending, 0n);
-  animate($total, prevTotal, total, 'TOTAL: ');
-  renderTurns();
+  animate($total, prevTotal, total);
 }
 
 function cancel() {
   if (pending === null) return;
   const prevPending = pending;
-  pending = null;
-  hidePending();
+  finishPending();
   animate($bid, prevPending, 0n);
 }
 
