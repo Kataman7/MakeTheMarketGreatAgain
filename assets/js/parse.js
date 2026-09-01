@@ -3,9 +3,8 @@ const SUFFIX_KEYS = ['k', 'm', 'b', 't'];
 const AMOUNT_RE = /^(-?\d+(?:\.\d+)?)\s*([kmbt])?$/;
 
 export function canAppend(current, key) {
-  if (/[kmbt]$/.test(current)) return false;
+  if (SUFFIX_KEYS.some((s) => current.endsWith(s))) return false;
   if (key === '-') return current === '';
-  if (key === '.') return !current.includes('.') && /\d/.test(current);
   if (SUFFIX_KEYS.includes(key)) return /\d/.test(current);
   return /^\d$/.test(key);
 }

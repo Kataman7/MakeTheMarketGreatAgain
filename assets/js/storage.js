@@ -29,12 +29,12 @@ export function loadHistory() {
   }
 }
 
-export function save(total, last) {
+function save(total, last) {
   localStorage.setItem(KEY_TOTAL, total.toString());
   localStorage.setItem(KEY_LAST, last.toString());
 }
 
-export function saveHistory(history) {
+function saveHistory(history) {
   localStorage.setItem(KEY_HISTORY, JSON.stringify(history.map((v) => v.toString())));
 }
 
