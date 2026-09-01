@@ -1,9 +1,13 @@
 const SUFFIX = { k: 3n, m: 6n, b: 9n, t: 12n };
+const SUFFIX_KEYS = ['k', 'm', 'b', 't'];
 const AMOUNT_RE = /^(-?\d+(?:\.\d+)?)\s*([kmbt])?$/;
 
-export function isValidInput(str) {
-  const v = str.trim().toLowerCase();
-  return v === '' || AMOUNT_RE.test(v);
+export function canAppend(current, key) {
+  if (/[kmbt]$/.test(current)) return false;
+  if (key === '-') return current === '';
+  if (key === '.') return !current.includes('.') && /\d/.test(current);
+  if (SUFFIX_KEYS.includes(key)) return /\d/.test(current);
+  return /^\d$/.test(key);
 }
 
 export function parseAmount(str) {

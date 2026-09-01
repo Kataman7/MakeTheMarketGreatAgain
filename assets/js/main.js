@@ -1,31 +1,38 @@
 import { loadTotal, loadLast, loadHistory, saveGame } from './storage.js';
 import { formatUSD } from './format.js';
-import { parseAmount, isValidInput } from './parse.js';
+import { parseAmount, canAppend } from './parse.js';
 import { animate } from './counter.js';
 import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
 const $last = document.getElementById('last-bid');
-const $input = document.getElementById('amount');
+const $typed = document.getElementById('typed');
 const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
 const $turns = document.getElementById('turns');
+const $keypad = document.getElementById('keypad');
 
 let total = loadTotal();
 let last = loadLast();
 let history = loadHistory();
 let pending = null;
+let typed = '';
 
 function render() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
   $last.textContent = formatUSD(pending !== null ? pending : last);
   $turns.textContent = 'Turn ' + history.length;
+  updateTyped();
+}
+
+function updateTyped() {
+  $typed.textContent = typed === '' ? '0' : typed;
   updatePreview();
 }
 
 function updatePreview() {
-  const val = parseAmount($input.value);
+  const val = parseAmount(typed);
   $preview.textContent = val === null ? '' : formatUSD(val);
 }
 
@@ -45,16 +52,27 @@ function animateState(prevTotal, prevLast) {
   animate($last, prevLast, last);
 }
 
-function clearInput() {
-  $input.value = '';
-  $input.classList.remove('invalid');
+function clearTyped() {
+  typed = '';
+  updateTyped();
+}
+
+function appendKey(key) {
+  if (!canAppend(typed, key)) return;
+  typed += key;
+  updateTyped();
+}
+
+function backspace() {
+  typed = typed.slice(0, -1);
+  updateTyped();
 }
 
 function bid() {
-  const val = parseAmount($input.value);
+  const val = parseAmount(typed);
   if (val === null) return;
   pending = val;
-  clearInput();
+  clearTyped();
   render();
   showPending();
 }
@@ -71,7 +89,6 @@ function validate() {
   hidePending();
   animateState(prevTotal, prevLast);
   render();
-  $input.blur();
 }
 
 function cancel() {
@@ -89,15 +106,18 @@ function reset() {
   hidePending();
   animateState(prevTotal, prevLast);
   render();
-  clearInput();
+  clearTyped();
 }
 
-$input.addEventListener('input', () => {
-  $input.classList.toggle('invalid', !isValidInput($input.value));
-  updatePreview();
+$keypad.addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  const key = btn.dataset.key;
+  if (key === 'backspace') backspace();
+  else appendKey(key);
 });
 
-$input.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') bid();
 });
 

@@ -27,8 +27,27 @@
   </div>
 
   <div id="controls" class="flex flex-col gap-3 w-full max-w-xs">
+    <div id="typed" class="text-xl text-center break-all">0</div>
     <div id="preview" class="text-2xl text-center break-all">$0</div>
-    <input id="amount" type="text" inputmode="decimal" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="ex: 100, 50k, 2M, -1B" class="w-full py-3 border-2 border-black text-xl text-center bg-transparent outline-none placeholder-gray-400">
+    <div id="keypad" class="grid grid-cols-4 gap-2">
+      <button data-key="7" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">7</button>
+      <button data-key="8" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">8</button>
+      <button data-key="9" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">9</button>
+      <button data-key="k" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">K</button>
+      <button data-key="4" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">4</button>
+      <button data-key="5" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">5</button>
+      <button data-key="6" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">6</button>
+      <button data-key="m" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">M</button>
+      <button data-key="1" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">1</button>
+      <button data-key="2" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">2</button>
+      <button data-key="3" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">3</button>
+      <button data-key="b" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">B</button>
+      <button data-key="-" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">-</button>
+      <button data-key="0" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">0</button>
+      <button data-key="." class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">.</button>
+      <button data-key="t" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">T</button>
+      <button data-key="backspace" class="col-span-4 py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">&larr;</button>
+    </div>
     <button id="btn-bid" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Bid</button>
     <button id="btn-reset" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Reset</button>
   </div>
