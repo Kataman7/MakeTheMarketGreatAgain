@@ -117,10 +117,6 @@ $keypad.addEventListener('click', (e) => {
   else appendKey(key);
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') bid();
-});
-
 document.getElementById('btn-bid').addEventListener('click', bid);
 document.getElementById('btn-validate').addEventListener('click', validate);
 document.getElementById('btn-cancel').addEventListener('click', cancel);

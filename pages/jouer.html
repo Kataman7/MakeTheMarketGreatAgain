@@ -9,44 +9,45 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
-<body class="h-full bg-[#fdfdfd] flex flex-col items-center justify-between py-6 px-4">
+<body class="h-full bg-[#fdfdfd] flex flex-col px-4 py-4">
   <div class="w-full flex justify-between items-center">
     <a href="../index.html" class="text-sm hover:underline uppercase">Back</a>
     <div id="turns" class="text-sm uppercase">Turn 0</div>
     <a href="history.html" class="text-sm hover:underline uppercase">End Game</a>
   </div>
 
-  <div id="total" class="text-2xl text-center break-all">TOTAL: $0</div>
+  <div class="flex-1 min-h-0 flex flex-col items-center justify-center">
+    <div id="total" class="text-2xl text-center break-all">TOTAL: $0</div>
+    <div id="last-bid" class="text-7xl sm:text-9xl text-center break-all">$0</div>
+  </div>
 
-  <div id="last-bid" class="text-9xl sm:text-[10rem] text-center break-all">$0</div>
-
-  <div id="pending" class="hidden flex flex-col items-center gap-3 w-full max-w-xs">
+  <div id="pending" class="hidden flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
     <div class="text-lg text-center">PENDING</div>
     <button id="btn-validate" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Validate</button>
     <button id="btn-cancel" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Cancel</button>
   </div>
 
-  <div id="controls" class="flex flex-col gap-3 w-full max-w-xs">
+  <div id="controls" class="flex flex-col gap-2 w-full max-w-xs mx-auto">
     <div id="typed" class="text-xl text-center break-all">0</div>
     <div id="preview" class="text-2xl text-center break-all">$0</div>
     <div id="keypad" class="grid grid-cols-4 gap-2">
-      <button data-key="7" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">7</button>
-      <button data-key="8" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">8</button>
-      <button data-key="9" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">9</button>
-      <button data-key="k" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">K</button>
-      <button data-key="4" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">4</button>
-      <button data-key="5" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">5</button>
-      <button data-key="6" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">6</button>
-      <button data-key="m" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">M</button>
-      <button data-key="1" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">1</button>
-      <button data-key="2" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">2</button>
-      <button data-key="3" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">3</button>
-      <button data-key="b" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">B</button>
-      <button data-key="-" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">-</button>
-      <button data-key="0" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">0</button>
-      <button data-key="." class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">.</button>
-      <button data-key="t" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">T</button>
-      <button data-key="backspace" class="col-span-4 py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">&larr;</button>
+      <button data-key="7" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">7</button>
+      <button data-key="8" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">8</button>
+      <button data-key="9" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">9</button>
+      <button data-key="k" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">K</button>
+      <button data-key="4" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">4</button>
+      <button data-key="5" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">5</button>
+      <button data-key="6" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">6</button>
+      <button data-key="m" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">M</button>
+      <button data-key="1" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">1</button>
+      <button data-key="2" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">2</button>
+      <button data-key="3" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">3</button>
+      <button data-key="b" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">B</button>
+      <button data-key="-" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">-</button>
+      <button data-key="0" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">0</button>
+      <button data-key="." class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">.</button>
+      <button data-key="t" class="py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">T</button>
+      <button data-key="backspace" class="col-span-4 py-2 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">&larr;</button>
     </div>
     <button id="btn-bid" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Bid</button>
     <button id="btn-reset" class="w-full py-3 border-2 border-black text-xl uppercase hover:bg-black hover:text-[#fdfdfd] transition">Reset</button>
