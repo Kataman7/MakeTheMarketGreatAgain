@@ -16,12 +16,15 @@
     <a href="history.html" class="text-sm hover:underline uppercase">End Game</a>
   </div>
 
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center mt-6">
     <div class="text-2xl text-center">TOTAL</div>
-    <div id="total" class="text-2xl text-center break-all">$0</div>
+    <div class="flex items-baseline justify-center">
+      <span class="text-sm">$</span>
+      <span id="total" class="text-2xl text-center break-all">0</span>
+    </div>
   </div>
 
-  <div id="bid-display" class="flex items-baseline justify-center">
+  <div id="bid-display" class="flex items-baseline justify-center mt-auto mb-auto">
     <span class="text-4xl sm:text-5xl">$</span>
     <span id="bid-number" class="text-8xl sm:text-9xl break-all">0</span>
   </div>
@@ -32,7 +35,10 @@
   </div>
 
   <div id="controls" class="flex flex-col gap-3 w-full max-w-xs">
-    <div id="preview" class="text-3xl text-center break-all">$0</div>
+    <div id="preview" class="flex items-baseline justify-center text-3xl">
+      <span class="text-base">$</span>
+      <span id="preview-value" class="break-all">0</span>
+    </div>
     <div id="keypad" class="grid grid-cols-4 gap-2">
       <button data-key="k" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">K</button>
       <button data-key="m" class="py-3 border-2 border-black text-xl hover:bg-black hover:text-[#fdfdfd] transition">M</button>

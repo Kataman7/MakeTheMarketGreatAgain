@@ -1,12 +1,12 @@
 import { loadTotal, loadHistory, loadTurns, saveGame } from './storage.js';
-import { formatUSD, formatCompact } from './format.js';
+import { formatCompact } from './format.js';
 import { parseAmount, canAppend } from './parse.js';
 import { animate } from './counter.js';
 import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
 const $bid = document.getElementById('bid-number');
-const $preview = document.getElementById('preview');
+const $preview = document.getElementById('preview-value');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
 const $turns = document.getElementById('turns');
@@ -19,7 +19,7 @@ let pending = null;
 let typed = '';
 
 function renderTotal() {
-  $total.textContent = formatUSD(total);
+  $total.textContent = formatCompact(total);
 }
 
 function renderTurns() {
@@ -34,7 +34,7 @@ function render() {
 
 function updatePreview() {
   const val = parseAmount(typed);
-  $preview.textContent = val === null ? '' : formatUSD(val);
+  $preview.textContent = val === null ? '' : formatCompact(val);
 }
 
 function showPending() {
@@ -89,7 +89,7 @@ function validate() {
   playCashout();
   finishPending();
   animate($bid, prevPending, 0n, formatCompact);
-  animate($total, prevTotal, total);
+  animate($total, prevTotal, total, formatCompact);
 }
 
 function cancel() {
