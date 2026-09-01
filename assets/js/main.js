@@ -17,10 +17,17 @@ let history = loadHistory();
 let pending = null;
 let typed = '';
 
-function render() {
+function renderTotal() {
   $total.textContent = 'TOTAL: ' + formatUSD(total);
-  $bid.textContent = formatUSD(pending ?? 0n);
+}
+
+function renderTurns() {
   $turns.textContent = 'Turn ' + history.length;
+}
+
+function render() {
+  renderTotal();
+  renderTurns();
   updatePreview();
 }
 
@@ -76,7 +83,7 @@ function validate() {
   hidePending();
   animate($bid, prevPending, 0n);
   animate($total, prevTotal, total, 'TOTAL: ');
-  render();
+  renderTurns();
 }
 
 function cancel() {
