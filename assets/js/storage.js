@@ -19,10 +19,6 @@ export function loadTurns() {
   return readBig(KEY_TURNS);
 }
 
-export function loadTurns() {
-  return readBig(KEY_TURNS);
-}
-
 export function loadHistory() {
   try {
     const raw = localStorage.getItem(KEY_HISTORY);

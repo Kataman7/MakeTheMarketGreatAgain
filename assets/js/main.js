@@ -1,11 +1,11 @@
 import { loadTotal, loadHistory, loadTurns, saveGame } from './storage.js';
-import { formatUSD } from './format.js';
+import { formatUSD, formatCompact } from './format.js';
 import { parseAmount, canAppend } from './parse.js';
 import { animate } from './counter.js';
 import { playCashout } from './sound.js';
 
 const $total = document.getElementById('total');
-const $bid = document.getElementById('bid-display');
+const $bid = document.getElementById('bid-number');
 const $preview = document.getElementById('preview');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
@@ -68,7 +68,7 @@ function bid() {
   if (val === null) return;
   pending = val;
   clearTyped();
-  animate($bid, 0n, pending);
+  animate($bid, 0n, pending, formatCompact);
   showPending();
 }
 
@@ -88,7 +88,7 @@ function validate() {
   history.push(pending);
   playCashout();
   finishPending();
-  animate($bid, prevPending, 0n);
+  animate($bid, prevPending, 0n, formatCompact);
   animate($total, prevTotal, total);
 }
 
@@ -96,7 +96,7 @@ function cancel() {
   if (pending === null) return;
   const prevPending = pending;
   finishPending();
-  animate($bid, prevPending, 0n);
+  animate($bid, prevPending, 0n, formatCompact);
 }
 
 $keypad.addEventListener('click', (e) => {
