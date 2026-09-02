@@ -9,14 +9,21 @@
   <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
   <link rel="stylesheet" href="../assets/styles.css">
   <style>
-    #rules-content { font-weight: normal; }
-    #rules-content h1, #rules-content h2 { font-weight: bold; margin-bottom: 0.75rem; }
-    #rules-content h1 { font-size: 2.5rem; text-align: center; }
-    #rules-content h2 { margin-top: 1.5rem; font-size: 1.25rem; }
+    #rules-content { font-weight: normal; line-height: 1.6; }
+    #rules-content h1 { font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 1rem; }
+    #rules-content h2 { font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 0.75rem; }
+    #rules-content h3 { font-size: 1.25rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    #rules-content h4 { font-size: 1.1rem; font-weight: bold; margin-top: 1.25rem; margin-bottom: 0.5rem; }
     #rules-content p { margin-bottom: 0.75rem; text-align: justify; }
-    #rules-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    #rules-content ul, #rules-content ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    #rules-content ul { list-style: disc; }
+    #rules-content ol { list-style: decimal; }
     #rules-content li { margin-bottom: 0.25rem; }
-    #rules-content code { font-family: monospace; background: #f0f0f0; padding: 0.1rem 0.3rem; }
+    #rules-content li::marker { font-weight: bold; }
+    #rules-content em { font-style: italic; }
+    #rules-content strong { font-weight: bold; }
+    #rules-content code { font-family: monospace; background: #f0f0f0; padding: 0.1rem 0.3rem; border-radius: 0.25rem; }
+    #rules-content blockquote { border-left: 3px solid #000; padding-left: 1rem; margin: 1rem 0; }
   </style>
 </head>
 <body class="min-h-full bg-[#fdfdfd] flex flex-col items-center p-6">
