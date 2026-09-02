@@ -1,6 +1,4 @@
-# MAKE THE MARKET GREAT AGAIN
-
-## Game rules
+# GAME RULES
 
 ### 1. GOAL OF THE GAME
 
