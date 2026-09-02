@@ -1,48 +1,67 @@
-# Reglas
+# 📈 MAKE THE MARKET GREAT AGAIN
 
-Bienvenido a **Make The Market Great Again**.
+*Reglas del juego*
 
-## Material
+### 🎯 1. OBJETIVO DEL JUEGO
 
-- **21 cartas de Empresa** (repartidas entre Tech, Industria, Medios, Salud y 5 zonas geográficas).
-- **18 cartas de Tweets** (con bonificaciones, penalizaciones y escudos).
-- **Dinero infinito** para cada jugador para pujar en las subastas.
+Interpretar al Ministro de Finanzas de una superpotencia (Japón, Europa, Corea, EE.UU. o China) y construir la cartera de **acciones bursátiles** más poderosa. Acumula la mayor cantidad de Puntos de Victoria (PV) mientras sobrevives a las crisis... **sin provocar una hiperinflación fatal.**
 
-## Objetivo del juego
+### 📦 2. MATERIAL
 
-Acumular la mayor cantidad de **puntos de victoria (PV)** con tus empresas mientras sobrevives a las crisis... y sobre todo **no ser el jugador que más dinero gastó** al final de la partida.
+* **5 cartas de País** (Japón, Europa, Corea, EE.UU., China).
+* **21 cartas de Acciones de Empresas** (con un sector, un país de origen y un número de PV).
+* **18 cartas de Tweets** (bonificaciones, penalizaciones y escudos).
+* *Nota:* Para gestionar el dinero y seguir los gastos, **escanea el código QR** para usar el sitio web dedicado (luego pulsa el botón "PLAY").
 
-## Preparación
+### 🛠️ 3. PREPARACIÓN
 
-- Separa las cartas en dos mazos distintos: el mazo de **Empresas** y el mazo de **Tweets**.
-- Baraja cada mazo boca abajo.
+1. Cada jugador elige o roba una **carta de País** y la coloca frente a él.
+2. Separa el resto del juego en dos mazos: el **mazo de Acciones** y el **mazo de Tweets**. Barájalos y colócalos boca abajo en el centro.
+3. Cada jugador saca su teléfono, **escanea el código QR** para acceder al sitio web de la impresora de dinero y prepararse para imprimir moneda.
+4. **Visibilidad:** Debes colocar y mostrar todas tus cartas de Acciones adquiridas boca arriba sobre la mesa a la vista de todos. Sin embargo, puedes ocultar el total de dinero que has gastado.
 
-## Desarrollo de un turno
+### 🔍 4. ANATOMÍA DE UNA ACCIÓN BURSÁTIL
 
-En cada turno, roba y juega una carta de **Empresa**.
+Cada carta de Acción tiene 3 atributos clave:
 
-### Subasta secreta
+1. **Puntos de Victoria (PV) base:** Dependen de su sector (Tech = **4 PV** | Industria = **3 PV** | Medios = **2 PV** | Salud = **1 PV**).
+2. **Sector:** Tech, Industria, Medios o Salud.
+3. **País de origen:** China, Europa, Japón o Corea.
 
-1. Cada jugador prepara **en secreto** la cantidad de su elección en su mano.
-2. **Revelación**: todos muestran su puja al mismo tiempo. El que puje más alto paga al banco y se lleva la Empresa a su cartera.
-3. **Atención**: si dos jugadores hacen exactamente la misma puja máxima, nadie gana la carta, pero todo el dinero pujado se pierde.
+### 🔄 5. DESARROLLO DE UN TURNO
 
-### Los Tweets
+En cada turno, una nueva **acción de empresa entra al mercado.**
 
-A intervalos regulares (por ejemplo, cada 2 empresas compradas, o al ritmo que elijas), roba y lee un Tweet de Trump en voz alta. Colócalo en el centro de la mesa: modificará el valor de las cartas al final del juego.
+#### 🖨️ Paso A: La Subasta Bursátil (a través del sitio web)
 
-## Fin de la partida y recuento
+1. Se revela la primera carta de Acción del mazo.
+2. **Puja libre:** Utiliza tu acceso ilimitado a la impresora de dinero digital en el sitio web para pujar la cantidad que elijas.
+3. **Revelación:** Todos revelan su puja al mismo tiempo. El que puja más alto se lleva la acción y la añade boca arriba a su cartera sobre la mesa.
+* ⚠️ **La Trampa de la Igualdad:** Si dos ministros hacen exactamente la misma puja máxima, la acción se planta (nadie la obtiene) y todo el dinero impreso para esa subasta se quema definitivamente.
 
-La partida se detiene instantáneamente en cuanto se vende la última carta de Empresa del mazo. El recuento se hace en dos pasos estrictos:
+#### 📱 Paso B: Los Tweets de Trump
 
-### 1. La Trampa de la Eliminación (Q.E. Trap)
+* A intervalos regulares, roba y lee un **Tweet de Trump** en voz alta en el centro de la mesa. Modifica permanentemente el valor bursátil de los sectores hasta el final del juego.
 
-Todos los jugadores anuncian públicamente el total acumulado del dinero que gastaron de principio a fin de la partida. El jugador que gastó más dinero es **eliminado inmediatamente por bancarrota**, sin importar sus puntos.
+### 👑 6. REGLAS ESPECIALES: LOS MONOPOLIOS
 
-### 2. Cálculo de Puntos (para los supervivientes)
+Si posees una gran cantidad de cartas del mismo tipo al final del juego, beneficias de ventajas mayores:
 
-- Suma los PV base de tus empresas (Tech = 4, Industria = 3, Medios = 2, Salud = 1).
-- Luego aplica las bonificaciones y penalizaciones de todos los Tweets colocados en la mesa.
-- No olvides revisar tus cartas: si posees los sectores o países requeridos, tus **Escudos anulan las penalizaciones**.
+* **Monopolio o Duopolio (mayoría de cartas):** El jugador que posee más cartas (o empatado en duopolio) en un dominio está protegido: **los efectos negativos de las cartas Tweet no se aplican** para él.
+* **Monopolio Estricto sobre Medios:** Si posees un monopolio absoluto sobre Medios, cuando se aplican las crisis, **roba 2 cartas de Tweet, elige cuál se aplica al juego y devuelve la otra al fondo del mazo.**
 
-El superviviente con más PV gana. **Un jugador con 0 PV al final también es eliminado: se necesita un número positivo de PV para ganar.**
+### 🏁 7. FIN DE LA PARTIDA Y RECUENTO
+
+La partida termina instantáneamente en cuanto se vende la última carta de Acción del mazo. La cumbre bursátil concluye en dos pasos:
+
+#### 🛑 Paso 1: La Trampa de la Bancarrota (Deuda Soberana)
+
+* Cada jugador revela el **total acumulado de todo el dinero que ha impreso e inyectado** (usando los datos registrados en el sitio web) desde el inicio de la partida.
+* **El ministro que más dinero ha gastado es inmediatamente destituido (eliminado)** por bancarrota, sin importar sus puntos.
+
+#### 🏆 Paso 2: Cálculo de Puntos (Para los supervivientes)
+
+1. **Valor bursátil base:** Suma los PV de tus acciones (Tech = 4, Industria = 3, Medios = 2, Salud = 1).
+2. **Efectos de los Tweets:** Aplica las bonificaciones/penalizaciones de los Tweets activos en el mercado (salvo que tus monopolios te protejan).
+3. **Escudos geográficos:** Si tus acciones poseen los secteurs o zonas requeridas, tus escudos anulan las penalizaciones.
+4. **Victoria:** El ministro superviviente con **más PV** (y un puntaje estrictamente positivo mayor a 0) gana la partida.
