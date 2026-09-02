@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rules - MMGA</title>
   <link rel="icon" href="../public/icon.png">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <meta name="theme-color" content="#fdfdfd">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
   <link rel="stylesheet" href="../assets/styles.css">
@@ -27,6 +29,7 @@
   </style>
 </head>
 <body class="min-h-full bg-[#fdfdfd] flex flex-col items-center p-6">
+  <script src="../assets/js/sw-register.js"></script>
   <a href="../index.html" class="absolute top-4 left-4 text-sm hover:underline uppercase">Back</a>
   <div id="rules-content" class="mt-12 w-full max-w-lg"></div>
   <script type="module" src="../assets/js/rules.js"></script>
