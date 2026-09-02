@@ -1,6 +1,4 @@
-# MAKE THE MARKET GREAT AGAIN
-
-## Règles du jeu
+# RÈGLES DU JEU
 
 ### 1. LE BUT DU JEU
 
