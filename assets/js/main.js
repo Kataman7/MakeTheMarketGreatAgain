@@ -9,6 +9,7 @@ const $bid = document.getElementById('bid-number');
 const $preview = document.getElementById('preview-value');
 const $pending = document.getElementById('pending');
 const $controls = document.getElementById('controls');
+const $totalSection = document.getElementById('total-section');
 const $turns = document.getElementById('turns');
 const $keypad = document.getElementById('keypad');
 
@@ -40,11 +41,13 @@ function updatePreview() {
 function showPending() {
   $pending.classList.remove('hidden');
   $controls.classList.add('hidden');
+  $totalSection.classList.add('hidden');
 }
 
 function hidePending() {
   $pending.classList.add('hidden');
   $controls.classList.remove('hidden');
+  $totalSection.classList.remove('hidden');
 }
 
 function clearTyped() {
